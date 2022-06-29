@@ -1,0 +1,124 @@
+body {
+  margin:0;
+  padding:0;
+  /* relative to the height of the view port */
+  min-height: 100vh;
+  /* initializes a flex box, determines how an item will grow/shrink to fit a container */
+  display:flex;
+  /* center all items in a flexible div */
+  align-items: center;
+  /* Align the flex items at the center of the container: */
+  justify-content: center;
+  /* The flexible items are displayed vertically, as a column */
+  flex-direction: column;
+  background: #000000;
+  background-image: url("stars.png");
+  font-family: 'Orbitron', sans-serif;
+}
+h1 {
+  position:relative;
+  top: -80px;
+  font-size: 100px;
+  animation: myMove 3s;
+}
+h2 {
+  position:relative;
+  top: 80px;
+  font-size: 100px;
+  animation: myMove2 3s;
+}
+/* animations to get the headers to move in place on load up */
+@keyframes myMove {
+  0% {
+    top: -300px;
+  }
+  100% {
+    top: -80px;
+  }
+}
+
+@keyframes myMove2 {
+  0% {
+    top: 300px;
+  }
+  100% {
+    top: 80px;
+  }
+}
+
+/* class selectors */
+
+/* black hole animation */
+.outer-circle{
+  position:relative;
+  /* width of a square */
+  width:400px;
+  height:400px;
+  /* sets a color gradient */
+  background:linear-gradient(#f3125a,#f33a12);
+  /* creates a circle */
+  border-radius:50%;
+  /* Binding an animation to a <div> element, using the shorthand property: */
+  animation: rotate 1.5s linear infinite;
+}
+
+a:hover .outer-cirle {
+  background:linear-gradient(#12F3AB,#12CAF3)
+}
+a:hover .outer-circle span {
+  background:linear-gradient(#12F3AB,#12CAF3)
+}
+/* target span in the outer circle */
+.outer-circle span {
+  position:absolute;
+  width:400px;
+  height:400px;
+  background:linear-gradient(#f3125a,#f33a12);
+  /* goes over outer circle, have to make it a circle as well */
+  border-radius:50%;
+}
+/* individual targets each span so that we can slowly increase the blur */
+span:nth-child(1){
+  filter:blur(5px);
+}
+span:nth-child(2){
+  filter:blur(10px);
+}
+span:nth-child(3){
+  filter:blur(25px);
+}
+span:nth-child(4){
+  filter:blur(150px);
+}
+.inner-circle{
+  width:360px;
+  height:360px;
+  position:absolute;
+  background:black;
+  /* down and to the left 10px */
+  top:20px;
+  left:20px;
+  /* make it a circle */
+  border-radius:50%;
+  /* bring to front */
+  z-index:9;
+}
+/* edit the rotate animation */
+/* target the identifier "rotate" in this case */
+@keyframes rotate {
+  /* creates the rotation animation */
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(45deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* end of black hole animation */
+
+/* it would be cool asf if i made the black hole a button who is red intitially and turns to the complimentary color when ihover */
+/* note that i want to use the mymove animation with keyframes to have words come on to the screen */

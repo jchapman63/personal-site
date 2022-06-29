@@ -1,0 +1,618 @@
+body {
+  background: #000000;
+  background-image: url('stars.png');
+  background-position: center;
+  margin: 0 3.5rem;
+  font-family: 'Orbitron', sans-serif;
+  color: rgba(255,255,255,255);
+}
+
+.round-cont {
+  border-radius: 25px;
+  background-color: #12CAF3;
+  filter:opacity(80%);
+  padding: 2rem;
+}
+
+/* navbar section */
+/* navbar logo */
+
+nav {
+  background-color: #000000;
+  background-image: url('stars.png');
+  padding: 0 2.25rem;
+}
+#navbar a {
+  font-size: 1.5rem;
+  margin: 1rem 1rem;
+  color: rgba(255,255,255,255);
+}
+#navbar a:hover{
+  color:#12CAF3;
+}
+.logo {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo-text {
+    color: rgba(255,255,255,255);
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.logo-text:hover {
+  color: #12CAF3;
+}
+
+/* black hole animation */
+.outer-circle{
+  position:relative;
+  /* width of a square */
+  width:100px;
+  height:100px;
+  /* sets a color gradient */
+  background:linear-gradient(#12F3AB,#12CAF3);
+  /* creates a circle */
+  border-radius:50%;
+  /* Binding an animation to a <div> element, using the shorthand property: */
+  animation: rotate 1.5s linear infinite;
+}
+
+a:hover .logo .outer-cirle {
+  background:linear-gradient(#f3125a,#f33a12)
+}
+a:hover .logo .outer-circle span {
+  background:linear-gradient(#f3125a,#f33a12)
+}
+/* target span in the outer circle */
+.outer-circle span {
+  position:absolute;
+  width:100px;
+  height:100px;
+  background:linear-gradient(#12F3AB,#12CAF3);
+  /* goes over outer circle, have to make it a circle as well */
+  border-radius:50%;
+}
+/* individual targets each span so that we can slowly increase the blur */
+.outer-circle span:nth-child(1){
+  filter:blur(5px);
+}
+.outer-circle span:nth-child(2){
+  filter:blur(10px);
+}
+.outer-circle span:nth-child(3){
+  filter:blur(25px);
+}
+.outer-circle span:nth-child(4){
+  filter:blur(150px);
+}
+.inner-circle{
+  width:90px;
+  height:90px;
+  position:absolute;
+  background:black;
+  /* down and to the left 10px */
+  top:5px;
+  left:5px;
+  /* make it a circle */
+  border-radius:50%;
+  /* bring to front */
+  z-index:9;
+}
+/* edit the rotate animation */
+/* target the identifier "rotate" in this case */
+@keyframes rotate {
+  /* creates the rotation animation */
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(45deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* title section */
+.title-container {
+  /* relative position is to the document,absolute completely removes from the doc flow, fixed is to the entire doc and follows scrolling, sticky is a combo of relative and fixed */
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 15rem 0 15rem;
+
+}
+
+.introduction {
+  width: 30vw;
+  position: relative;
+  margin-left: 8.25rem;
+}
+
+.introduction div {
+  position: relative;
+  top: 20%
+}
+
+.introduction p, h1, h2 {
+  margin-bottom: 2rem;
+}
+
+.spaceman {
+  position: relative;
+  width: 25vw;
+  right: -25%;
+
+  animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes floating {
+  0% {transform: translate(0, 0px);}
+  50% {transform: translate(0, 15px);}
+  100% {transform: translate(0, -0px);}
+}
+
+/* about section */
+.about-container {
+  padding-right: 1.25rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 50px;
+  margin-bottom: 15rem;
+  text-align: center;
+}
+
+.inner-cont {
+  border-radius: 25px;
+  background-color: #0AA5C8;
+  padding: 1rem;
+}
+
+.about-image {
+  background-color: white;
+  width: 10vw;
+  height: 15vh;
+  border-radius: 100%;
+}
+
+.personal-summary p {
+  padding: 2rem;
+  line-height: 3;
+  margin-bottom: 2rem;
+}
+
+.skill-summary {
+  margin-right: 2rem;
+}
+
+.skill-summary li {
+  margin: 2.5rem 0;
+  list-style-type:circle;
+}
+
+.comp-image {
+  border-radius: 100%;
+  width: 10vw;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+.skill-summary h3 {
+  margin-bottom: 1rem;
+}
+
+.education ul {
+  margin: 2.5rem 0;
+}
+
+.capital {
+  width: 10vw;
+  border-radius: 100%;
+}
+
+.career {
+  margin-right: 2rem;
+}
+.career p {
+  line-height: 2.5;
+}
+
+.rocket {
+  width: 10vw;
+}
+
+/* particle animation separator */
+.particle-parent {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  top: 10vh;
+
+}
+
+.particle-parent h2 {
+  width: 100vw;
+  transform: translateX(53%);
+
+  color: rgb(41, 40, 40);
+  
+}
+
+.ball {
+  --x: 0;
+  --y: 0;
+
+  width: 1vw;
+  height: 1vw;
+  border-radius: 100%;
+  position: absolute;
+  top: calc(var(--y)*1vw);
+  left: calc(var(--x)*1vw);
+}
+
+/* projects section */
+.projects-cont {
+  text-align: center;
+  margin-bottom: 15rem;
+}
+
+.projects-cont h1 {
+  margin-left: 3rem;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 50px;
+}
+
+.proj-card {
+  background-color:#0AA5C8;
+  padding: 1.5rem;
+  border-radius: 25px;
+  text-align: center;
+  line-height: 2;
+}
+
+.card-image {
+  width: 8vw;
+  height: 8vw;
+  border-radius: 100%;
+}
+
+.button-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-button:hover {
+  background-color: #12CAF3;
+  color:white;
+}
+
+/* contact section */
+.contact-cont {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.direct-cont {
+  padding: 2rem 6rem;
+  background-color: #0AA5C8;
+  border-radius: 25px;
+  line-height: 2;
+}
+ /* contact */
+ #overlay {
+  margin-top: 15rem;
+}
+
+#overlay h1 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 1.5rem 0;
+}
+
+input, textarea {
+
+    width: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    outline:none;
+    resize:none;
+    border:none;
+    border-bottom: 5px solid #12CAF3;
+    border-radius: 10px;
+}
+
+input:focus, textarea:focus {
+    border-bottom: 5px solid #f33a12;
+}
+
+textarea::-webkit-scrollbar {
+    width: 0.25rem;
+
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: #12CAF3;
+    height: 0.25rem;
+}
+
+.center {
+    text-align: center;
+}
+
+.card-button {
+  display:inline-block;
+  text-decoration: none;
+  margin: 1rem;
+  font-size: 1.5rem;
+  background-color: #0AA5C8;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.card-button:hover {
+  background-color: #12CAF3;
+  color:white;
+}
+
+.error {
+    color:#f33a12;
+}
+
+.error-border {
+    border-bottom: 1px solid #f33a12;
+}
+
+#success {
+    color:#12F3AB;
+}
+
+#footer-contact {
+  position: relative;
+  text-align: center;
+  margin-top: 5rem;
+  min-height: 100%;
+}
+
+#footer-contact a {
+  margin: 2.5rem;
+  text-decoration: none;
+  color: white;
+}
+
+
+/* footer  */
+#footer {
+  text-align: center;
+}
+
+#footer a {
+  margin: 2.5rem;
+  text-decoration: none;
+  color: white;
+}
+
+/* for mobile display */
+@media only screen and (max-device-width: 600px) {
+
+  /* mobile navbar */
+  #navbar a {
+    margin: 1rem 0;
+  }
+  .logo-text {
+    margin-left: 0;
+    padding-right: 1.86rem;
+  }
+
+  /* mobile title section */
+  .title-container {
+    display: block;
+    text-align: center;
+
+  }
+  .introduction {
+    left: 50%;
+    text-align: center;
+    width: 100vw;
+    padding: 0 3.5rem;
+    margin-top: 2rem;
+    margin-left: 0;
+    transform: translateX(-50%);
+  }
+  .introduction h1 {
+    font-size: 5rem;
+  }
+
+  .introduction h2 {
+    font-size: 3.5rem;
+  }
+
+  .introduction p {
+    font-size: 1.5rem;
+  }
+
+  .introduction h1, h2, p {
+    margin-bottom: 4rem;
+  }
+
+  .spaceman {
+    display: block;
+    right:-26%;
+    width: 50%;
+  }
+
+  /* mobile about section */
+  .about-container {
+    display: block;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .about-image {
+    width:20%;
+    height:15%;
+    float: none;
+    margin-right: 0;
+  }
+
+  .about-container h1 {
+    font-size: 5rem;
+  }
+
+  .about-container h2 {
+    font-size: 2rem;
+  }
+
+  .about-container h3 {
+    font-size: 2rem;
+  }
+
+  .about-container p {
+    font-size: 1.5rem;
+  }
+
+  .about-container li {
+    font-size: 1.5rem;
+  }
+
+  .personal-summary {
+    margin-bottom: 4rem;
+  }
+
+  .personal-summary p {
+    margin-top: 3rem;
+    width:auto;
+    line-height: 3;
+    padding-left: 0rem;
+    font-size: 1.5rem;
+  }
+
+  .skill-summary {
+    margin-right: 0;
+    margin-bottom: 4rem;
+  }
+  
+  .comp-image {
+    width: 20%;
+  }
+
+  .skill-summary p {
+    font-size: 1.5rem;
+  }
+
+  .education {
+    margin-bottom: 4rem;
+  }
+
+  .capital {
+    width: 20%;
+  }
+
+  .career {
+    margin-right: 0;
+  }
+
+  .rocket {
+    width: 20%;
+  }
+
+  /* mobile wave section */
+  .particle-parent {
+    top: 7vh;
+    width: 43vw
+  }
+
+  .particle-parent h2 {
+    margin-left: 11%;
+  }
+
+  /* mobile projects section */
+  .projects-cont h1 {
+    margin-left: 0;
+    font-size: 5rem;
+  }
+  .project-grid {
+    display:block;
+  }
+
+  .proj-card {
+    margin-bottom: 4rem;
+    font-size: 2rem;
+    line-height: 2;
+  }
+
+  .proj-card h2 {
+    font-size: 4rem;
+  }
+
+  .card-image {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .card-button {
+    font-size: 2.5rem;
+    margin: 2rem;
+  }
+  
+  .final-card {
+    margin-bottom: 0;
+  }
+
+  /* contact mobile */
+  .contact-cont h1 {
+    font-size: 5rem;
+  }
+  .direct-cont {
+    font-size: 2rem;
+  }
+
+  .direct-cont h2 {
+    font-size: 3rem;
+  }
+
+  /* contact page mobile */
+  #overlay {
+    margin-top: 18rem;
+  }
+
+  #overlay h1 {
+      font-size: 5rem;
+  }
+
+  #overlay label {
+    font-size: 4rem;
+  }
+
+  #overlay input {
+    font-size: 2.5rem;
+  }
+
+  #overlay textarea {
+    font-size: 2.5rem;
+  }
+
+  #overlay small {
+    font-size: 2rem;
+  }
+  #overlay p {
+    font-size: 2rem;
+  }
+
+  #overlay .card-button {
+    font-size: 3rem;
+    margin: 3rem;
+  }
+}
